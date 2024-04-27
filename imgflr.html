@@ -70,8 +70,11 @@
     function changePosition() {
         var noOption = document.getElementById('noOption');
         var containerWidth = document.querySelector('.container').offsetWidth;
-        var newPositionX = Math.random() * (containerWidth - noOption.offsetWidth);
-        var newPositionY = Math.random() * (window.innerHeight - noOption.offsetHeight);
+        var containerHeight = document.querySelector('.container').offsetHeight;
+        var buttonWidth = noOption.offsetWidth;
+        var buttonHeight = noOption.offsetHeight;
+        var newPositionX = Math.random() * (containerWidth - buttonWidth);
+        var newPositionY = Math.random() * (containerHeight - buttonHeight);
         noOption.style.left = newPositionX + 'px';
         noOption.style.top = newPositionY + 'px';
     }
