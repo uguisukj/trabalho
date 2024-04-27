@@ -19,6 +19,7 @@
 
     .container {
         text-align: center;
+        position: relative;
     }
 
     .title {
@@ -69,12 +70,10 @@
 
     function changePosition() {
         var noOption = document.getElementById('noOption');
-        var containerWidth = document.querySelector('.container').offsetWidth;
-        var containerHeight = document.querySelector('.container').offsetHeight;
-        var buttonWidth = noOption.offsetWidth;
-        var buttonHeight = noOption.offsetHeight;
-        var newPositionX = Math.random() * (containerWidth - buttonWidth);
-        var newPositionY = Math.random() * (containerHeight - buttonHeight);
+        var container = document.querySelector('.container');
+        var containerRect = container.getBoundingClientRect();
+        var newPositionX = Math.random() * (containerRect.width - noOption.offsetWidth);
+        var newPositionY = Math.random() * (containerRect.height - noOption.offsetHeight);
         noOption.style.left = newPositionX + 'px';
         noOption.style.top = newPositionY + 'px';
     }
