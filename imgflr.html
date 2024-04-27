@@ -19,7 +19,6 @@
 
     .container {
         text-align: center;
-        position: relative;
     }
 
     .title {
@@ -70,17 +69,13 @@
 
     function changePosition() {
         var noOption = document.getElementById('noOption');
-        var container = document.querySelector('.container');
-        var containerRect = container.getBoundingClientRect();
-        var newPositionX = Math.random() * (containerRect.width - noOption.offsetWidth);
-        var newPositionY = Math.random() * (containerRect.height - noOption.offsetHeight);
-        noOption.style.left = newPositionX + 'px';
-        noOption.style.top = newPositionY + 'px';
+        var containerWidth = document.querySelector('.container').offsetWidth;
+        var newPosition = Math.random() * (containerWidth - noOption.offsetWidth);
+        noOption.style.left = newPosition + 'px';
     }
 
     function showError() {
-        var errorMessage = document.getElementById('errorMessage');
-        errorMessage.style.display = 'block';
+        alert("Você não pode escolher essa opção!");
     }
 </script>
 </body>
