@@ -19,10 +19,11 @@
 
     .container {
         text-align: center;
+        position: relative;
     }
 
     .title {
-        font-family: 'Undertale', sans-serif;
+        font-family: 'Arial', sans-serif;
         font-size: 24px;
         color: white;
         margin-bottom: 20px;
@@ -53,11 +54,16 @@
 </style>
 </head>
 <body>
+<audio autoplay loop>
+  <source src="https://www.youtube.com/watch?v=PP0yWo5Dxls" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
 <div class="container">
     <div class="title">Você aceita namorar comigo?</div>
     <div class="options">
         <div class="option" onclick="choose('sim')">Sim</div>
-        <div class="option" id="noOption" onmouseover="changePosition()" onclick="showError()">Não</div>
+        <div class="option" id="noOption" onmousemove="moveButton()" onclick="showError()">Não</div>
         <div class="error-message" id="errorMessage">Erro: Opção não disponível!</div>
     </div>
 </div>
@@ -67,15 +73,25 @@
         alert("Você escolheu " + option + "!");
     }
 
-    function changePosition() {
+    function moveButton() {
         var noOption = document.getElementById('noOption');
-        var containerWidth = document.querySelector('.container').offsetWidth;
-        var newPosition = Math.random() * (containerWidth - noOption.offsetWidth);
-        noOption.style.left = newPosition + 'px';
+        var xPos = event.clientX;
+        var yPos = event.clientY;
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var buttonWidth = noOption.offsetWidth;
+        var buttonHeight = noOption.offsetHeight;
+        
+        var newXPos = Math.random() * (windowWidth - buttonWidth);
+        var newYPos = Math.random() * (windowHeight - buttonHeight);
+
+        noOption.style.left = newXPos + 'px';
+        noOption.style.top = newYPos + 'px';
     }
 
     function showError() {
-        alert("Você não pode escolher essa opção!");
+        var errorMessage = document.getElementById('errorMessage');
+        errorMessage.style.display = 'block';
     }
 </script>
 </body>
