@@ -1,82 +1,76 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principais Florestas Nacionais do Brasil</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            padding: 20px;
-        }
-        .floresta {
-            position: relative;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .floresta img {
-            max-width: 100%;
-            border-radius: 5px;
-        }
-        .floresta h2 {
-            margin-top: 0;
-            font-size: 24px;
-            color: #333;
-        }
-        .floresta p {
-            font-size: 18px;
-            color: #555;
-        }
-        .button-container {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .button-container a {
-            display: inline-block;
-            background-color: #27ae60;
-            color: #fff;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        .button-container a:hover {
-            background-color: #219a55;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido de Namoro</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('https://cdn.discordapp.com/attachments/1233298699199971339/1233823246218952714/b1097e95cb62eacdae20b85b4fc4ddee.jpg?ex=662e7ef1&is=662d2d71&hm=f3d4b1deb373edbfdd4f95732c56e97d66e1c82b4f55d2473a6d3e4d2d3928b3');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .options {
+        display: inline-block;
+    }
+
+    .option {
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .option:hover {
+        transform: translateY(-10px);
+    }
+
+    .error-message {
+        display: none;
+        color: red;
+        font-size: 18px;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Principais Florestas Nacionais do Brasil</h1>
-    </header>
-    <main>
-        <div class="floresta">
-            <img src="https://cdn.discordapp.com/attachments/1232379101667528787/1232383075464511591/Floresta_Nacional_do_Tapajos_2.jpg?ex=662941ad&is=6627f02d&hm=7df9877271f452919c418e8ccb909422c388ceccda287e24c1717cb999aeb302&" alt="Floresta Nacional do Tapajós 1">
-            <div class="button-container">
-                <a href="#">Anterior</a>
-                <a href="#">Próxima</a>
-            </div>
-            <h2>Floresta Nacional do Tapajós</h2>
-            <p>A Floresta Nacional do Tapajós está localizada no estado do Pará e abrange uma área de aproximadamente 500 mil hectares. Esta área de conservação desempenha um papel crucial na preservação da biodiversidade amazônica e no apoio às comunidades locais que dependem dos recursos naturais da região.</p>
-        </div>
-    </main>
+<div class="container">
+    <div class="options">
+        <div class="option" onclick="choose('sim')">Sim</div>
+        <div class="option" id="noOption" onmouseover="changePosition()" onclick="showError()">Não</div>
+        <div class="error-message" id="errorMessage">Erro: Opção não disponível!</div>
+    </div>
+</div>
+
+<script>
+    function choose(option) {
+        alert("Você escolheu " + option + "!");
+    }
+
+    function changePosition() {
+        var noOption = document.getElementById('noOption');
+        var containerWidth = document.querySelector('.container').offsetWidth;
+        var newPosition = Math.random() * (containerWidth - noOption.offsetWidth);
+        noOption.style.left = newPosition + 'px';
+        noOption.style.top = newPosition + 'px';
+    }
+
+    function showError() {
+        var errorMessage = document.getElementById('errorMessage');
+        errorMessage.style.display = 'block';
+    }
+</script>
 </body>
 </html>
