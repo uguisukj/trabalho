@@ -70,9 +70,10 @@
     function changePosition() {
         var noOption = document.getElementById('noOption');
         var containerWidth = document.querySelector('.container').offsetWidth;
-        var newPosition = Math.random() * (containerWidth - noOption.offsetWidth);
-        noOption.style.left = newPosition + 'px';
-        noOption.style.top = newPosition + 'px';
+        var newPositionX = Math.random() * (containerWidth - noOption.offsetWidth);
+        var newPositionY = Math.random() * (window.innerHeight - noOption.offsetHeight);
+        noOption.style.left = newPositionX + 'px';
+        noOption.style.top = newPositionY + 'px';
     }
 
     function showError() {
